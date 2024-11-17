@@ -43,7 +43,19 @@ public class RestAPIBasics {
     }
 
     //Add place -> Update place with new address -> Get place to validate if new address is present.
+@Test
+public void updateAddress()
+{
+    RestAssured.baseURI="https://rahulshettyacademy.com";
+    given().log().all().queryParam("key","qaclick123")
+            .header("Content-Type","application/json")
+            .body(PayLoad.UpdatePlace())
+            .when().put("maps/api/place/update/json")
+            .then().log().all()
+            .assertThat().statusCode(200)
+            .body("msg",equalTo("Address successfully updated"));
 
+}
 
     @Test(enabled = true)
     public void GetDetails2() {
