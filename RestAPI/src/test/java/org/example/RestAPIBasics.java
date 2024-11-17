@@ -40,7 +40,7 @@ public class RestAPIBasics {
                 .when().post("maps/api/place/add/json")
                 .then().log().all().assertThat().statusCode(200)
                 .body("scope",equalTo("APP"))
-                .header("Content-Type","application/json");
+                .header("Server","Apache/2.4.52 (Ubuntu)");
 
     }
 
