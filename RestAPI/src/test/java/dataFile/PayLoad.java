@@ -24,7 +24,7 @@ public class PayLoad {
 
     public static String UpdatePlace(){
         return "{\n" +
-                "\"place_id\":\"cf08998c43f1b8c892bb92c751b4131c\",\n" +
+                "\"place_id\":\"placeID\",\n" +
                 "\"address\":\"101 Summer walk USA\",\n" +
                 "\"key\":\"qaclick123\"\n" +
                 "}";

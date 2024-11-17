@@ -12,7 +12,12 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+
 public class RestAPIBasics {
+
+    HashMap<String,String> Place_Id=new HashMap<String,String>();
+
 
     @Test(enabled = true)
     public void createRecord()
@@ -38,6 +43,7 @@ public class RestAPIBasics {
 
         JsonPath js = new JsonPath(Responce);
         String placeID=js.getString("place_id");
+        Place_Id.put("IdOne",placeID);
         System.out.println("placeID: "+placeID);
 
     }
@@ -46,10 +52,11 @@ public class RestAPIBasics {
 @Test
 public void updateAddress()
 {
+    System.out.println(Place_Id.get("IdOne"));
     RestAssured.baseURI="https://rahulshettyacademy.com";
     given().log().all().queryParam("key","qaclick123")
             .header("Content-Type","application/json")
-            .body(PayLoad.UpdatePlace())
+            .body(PayLoad.UpdatePlace().replace("placeID",Place_Id.get("IdOne")))
             .when().put("maps/api/place/update/json")
             .then().log().all()
             .assertThat().statusCode(200)
@@ -57,7 +64,7 @@ public void updateAddress()
 
 }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void GetDetails2() {
 // Specify the base URL to the RESTful web service
         RestAssured.baseURI = "https://demoqa.com/BookStore/v1/Books";

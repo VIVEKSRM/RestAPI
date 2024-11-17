@@ -4,8 +4,10 @@
     <test verbose="2" preserve-order="true" name="D:/Automation_Framework_v0.2/RestAPI/src/test/java/org/example/RestAPIBasics.java">
         <classes>
             <class name="org.example.RestAPIBasics">
-        <methods><include name="getdetails"/>
-            <include name="GetDetails2"/>
+        <methods>
+            <include name="createRecord"/>
+            <include name="updateAddress"/>
+            <exclude name="GetDetails2"/>
         </methods>
     </class>
     </classes>
