@@ -2,6 +2,8 @@ package org.example;
 
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.equalTo;
+
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -9,14 +11,14 @@ import org.testng.annotations.Test;
 
 public class RestAPIBasics {
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void createRecord()
     {
         //given - All Inputs
         // When - Submit the API - resource and http methods
         // Then - validate the response
 
-        RestAssured.baseURI="http://rahulshettyacademy.com";
+        RestAssured.baseURI="https://rahulshettyacademy.com";
         given().log().all().queryParam("key","qaclick123").header("Content-Type","application/json")
                 .body("{\r\n" +
                         "  \"location\": {\r\n" +
@@ -35,7 +37,7 @@ public class RestAPIBasics {
                         "  \"language\": \"French-IN\"\n" +
                         "}")
                 .when().post("maps/api/place/add/json")
-                .then().log().all().assertThat().statusCode(200);
+                .then().log().all().assertThat().statusCode(200).body("scope",equalTo("APP"));
 
 
     }
