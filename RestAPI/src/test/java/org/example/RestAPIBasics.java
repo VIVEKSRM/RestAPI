@@ -1,5 +1,6 @@
 package org.example;
 
+import dataFile.PayLoad;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.equalTo;
@@ -21,28 +22,16 @@ public class RestAPIBasics {
         RestAssured.baseURI="https://rahulshettyacademy.com";
         given().log().all().queryParam("key","qaclick123")
                 .header("Content-Type","application/json")
-                .body("{\r\n" +
-                        "  \"location\": {\r\n" +
-                        "    \"lat\": -38.383494,\r\n" +
-                        "    \"lng\": 33.427362\r\n" +
-                        "  },\n" +
-                        "  \"accuracy\": 50,\r\n" +
-                        "  \"name\": \"Frontline house\",\r\n" +
-                        "  \"phone_number\": \"(+91) 983 893 3937\",\r\n" +
-                        "  \"address\": \"29, side layout, cohen 09\",\n" +
-                        "  \"types\": [\n" +
-                        "    \"shoe park\",\n" +
-                        "    \"shop\"\n" +
-                        "  ],\n" +
-                        "  \"website\": \"https://rahulshettyacademy.com\",\n" +
-                        "  \"language\": \"French-IN\"\n" +
-                        "}")
+                .body(PayLoad.AddPlace())
                 .when().post("maps/api/place/add/json")
                 .then().log().all().assertThat().statusCode(200)
                 .body("scope",equalTo("APP"))
                 .header("Server","Apache/2.4.52 (Ubuntu)");
 
     }
+
+    //Add place -> Update place with new address -> Get place to validate if new address is present.
+
 
     @Test(enabled = true)
     public void GetDetails2() {
