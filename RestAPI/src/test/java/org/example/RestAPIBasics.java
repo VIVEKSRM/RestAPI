@@ -1,11 +1,13 @@
 package org.example;
 
 import dataFile.PayLoad;
+import groovyjarjarantlr4.v4.codegen.model.SrcOp;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.equalTo;
 
 import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.Test;
@@ -20,13 +22,23 @@ public class RestAPIBasics {
         // Then - validate the response
 
         RestAssured.baseURI="https://rahulshettyacademy.com";
-        given().log().all().queryParam("key","qaclick123")
+        String Responce= given()
+                .log().all()
+                .queryParam("key","qaclick123")
                 .header("Content-Type","application/json")
                 .body(PayLoad.AddPlace())
                 .when().post("maps/api/place/add/json")
-                .then().log().all().assertThat().statusCode(200)
+                .then()
+                //.log().all() //Log is not needed as now we are saving the responce in string
+                .assertThat().statusCode(200)
                 .body("scope",equalTo("APP"))
-                .header("Server","Apache/2.4.52 (Ubuntu)");
+                .header("Server","Apache/2.4.52 (Ubuntu)")
+                .extract().response().asString();
+        System.out.println("Responce: "+Responce);
+
+        JsonPath js = new JsonPath(Responce);
+        String placeID=js.getString("place_id");
+        System.out.println("placeID: "+placeID);
 
     }
 
