@@ -19,7 +19,8 @@ public class RestAPIBasics {
         // Then - validate the response
 
         RestAssured.baseURI="https://rahulshettyacademy.com";
-        given().log().all().queryParam("key","qaclick123").header("Content-Type","application/json")
+        given().log().all().queryParam("key","qaclick123")
+                .header("Content-Type","application/json")
                 .body("{\r\n" +
                         "  \"location\": {\r\n" +
                         "    \"lat\": -38.383494,\r\n" +
@@ -37,8 +38,9 @@ public class RestAPIBasics {
                         "  \"language\": \"French-IN\"\n" +
                         "}")
                 .when().post("maps/api/place/add/json")
-                .then().log().all().assertThat().statusCode(200).body("scope",equalTo("APP"));
-
+                .then().log().all().assertThat().statusCode(200)
+                .body("scope",equalTo("APP"))
+                .header("Content-Type","application/json");
 
     }
 
