@@ -12,6 +12,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import reUsableMethods.commonMethod;
 
 import java.util.HashMap;
 
@@ -42,9 +43,17 @@ public class RestAPIBasics {
                 .extract().response().asString();
         System.out.println("Responce: "+Responce);
 
-        JsonPath js = new JsonPath(Responce);
+        //    JsonPath js = new JsonPath(Responce);
+        //    String placeID=js.getString("place_id");
+        //    String address=js.getString("address");
+        // At place of above three lines we can create a common methods and call it every time
+        //    String placeID=commonMethod.getJson(Responce).getString("placeID");
+        //    String address=commonMethod.getJson(Responce).getString("address");
+//or like below
+        JsonPath js =commonMethod.getJson(Responce);
         String placeID=js.getString("place_id");
         String address=js.getString("address");
+
         Place_Id.put("IdOne",placeID);
         Place_Id.put("address",address);
         System.out.println("placeID: "+placeID);
@@ -89,8 +98,7 @@ public class RestAPIBasics {
                 //verification of New address from RestAPI method
                 .body("address",equalTo("101 Summer walk USA")).extract().response().asString();
         //Verification of New address from TestNG Assert
-        JsonPath jsGetPlace = new JsonPath(getPlace);
-        String actualAddress=jsGetPlace.getString("address");
+        String actualAddress=commonMethod.getJson(getPlace).getString("address");
         //System.out.println("*******actualAddress :- "+actualAddress);
         Place_Id.put("actualAddress",actualAddress);
         Assert.assertEquals(expectedNewAddress,Place_Id.get("actualAddress"));
