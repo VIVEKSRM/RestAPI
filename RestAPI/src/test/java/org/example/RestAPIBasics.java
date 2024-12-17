@@ -10,6 +10,7 @@ import io.restassured.http.Method;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -79,12 +80,22 @@ public class RestAPIBasics {
     @Test(priority=3)
     public void GetPlace()
     {
-given().log().all().queryParam("key","qaclick123")
-        .queryParam("place_id", Place_Id.get("IdOne"))
-        .when().get("maps/api/place/get/json")
-        .then().log().all()
-        .assertThat().statusCode(200)
-        .body("address",equalTo("101 Summer walk USA"));
+        String expectedNewAddress="101 Summer walk USA";
+        String getPlace=given().log().all().queryParam("key","qaclick123")
+                .queryParam("place_id", Place_Id.get("IdOne"))
+                .when().get("maps/api/place/get/json")
+                .then().log().all()
+                .assertThat().statusCode(200)
+                //verification of New address from RestAPI method
+                .body("address",equalTo("101 Summer walk USA")).extract().response().asString();
+        //Verification of New address from TestNG Assert
+        JsonPath jsGetPlace = new JsonPath(getPlace);
+        String newAddress=jsGetPlace.getString("address");
+        System.out.println("*******getPlaceData :- "+newAddress);
+        Place_Id.put("newAddress",newAddress);
+        Assert.assertEquals(expectedNewAddress,Place_Id.get("newAddress"));
+
+
     }
     @Test(enabled = false)
     public void GetDetails2() {
