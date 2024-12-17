@@ -90,10 +90,10 @@ public class RestAPIBasics {
                 .body("address",equalTo("101 Summer walk USA")).extract().response().asString();
         //Verification of New address from TestNG Assert
         JsonPath jsGetPlace = new JsonPath(getPlace);
-        String newAddress=jsGetPlace.getString("address");
-        System.out.println("*******getPlaceData :- "+newAddress);
-        Place_Id.put("newAddress",newAddress);
-        Assert.assertEquals(expectedNewAddress,Place_Id.get("newAddress"));
+        String actualAddress=jsGetPlace.getString("address");
+        //System.out.println("*******actualAddress :- "+actualAddress);
+        Place_Id.put("actualAddress",actualAddress);
+        Assert.assertEquals(expectedNewAddress,Place_Id.get("actualAddress"));
 
 
     }
