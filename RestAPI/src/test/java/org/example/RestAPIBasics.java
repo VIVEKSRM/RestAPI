@@ -19,7 +19,7 @@ public class RestAPIBasics {
     HashMap<String,String> Place_Id=new HashMap<String,String>();
 
 
-    @Test(enabled = true)
+    @Test(enabled = true,priority=1)
     public void createRecord()
     {
         //given - All Inputs
@@ -43,27 +43,49 @@ public class RestAPIBasics {
 
         JsonPath js = new JsonPath(Responce);
         String placeID=js.getString("place_id");
+        String address=js.getString("address");
         Place_Id.put("IdOne",placeID);
+        Place_Id.put("address",address);
         System.out.println("placeID: "+placeID);
 
     }
 
     //Add place -> Update place with new address -> Get place to validate if new address is present.
-@Test
-public void updateAddress()
-{
-    System.out.println(Place_Id.get("IdOne"));
-    RestAssured.baseURI="https://rahulshettyacademy.com";
-    given().log().all().queryParam("key","qaclick123")
-            .header("Content-Type","application/json")
-            .body(PayLoad.UpdatePlace().replace("placeID",Place_Id.get("IdOne")))
-            .when().put("maps/api/place/update/json")
-            .then().log().all()
-            .assertThat().statusCode(200)
-            .body("msg",equalTo("Address successfully updated"));
+    @Test(priority=2)
+    public void updateAddress()
+    {
+        System.out.println(Place_Id.get("IdOne"));
+        RestAssured.baseURI="https://rahulshettyacademy.com";
+        String updateAddressResponce=given().log().all().queryParam("key","qaclick123")
+                .header("Content-Type","application/json")
+                .body(PayLoad.UpdatePlace().replace("placeID",Place_Id.get("IdOne")))
+                .when().put("maps/api/place/update/json")
+                .then().log().all()
+                .assertThat().statusCode(200)
+                .body("msg",equalTo("Address successfully updated"))
+                .extract().response().asString();
+        // when we are updating the records, only sucess message will generate as part of response
+//        JsonPath js1 = new JsonPath(updateAddressResponce);
+//
+//        String placeID=js1.getString("place_id");
+//        System.out.println("*******placeID :- "+placeID);
+//        System.out.println("*******Responce of JS:- "+js1.toString());
+//        String newAddress=js1.getString("address");
+//        Place_Id.put("newAddress",newAddress);
+//        System.out.println("*******Responce :- "+newAddress);
+//        System.out.println("*******Responce :- "+Place_Id.get("newAddress"));
+    }
 
-}
-
+    @Test(priority=3)
+    public void GetPlace()
+    {
+given().log().all().queryParam("key","qaclick123")
+        .queryParam("place_id", Place_Id.get("IdOne"))
+        .when().get("maps/api/place/get/json")
+        .then().log().all()
+        .assertThat().statusCode(200)
+        .body("address",equalTo("101 Summer walk USA"));
+    }
     @Test(enabled = false)
     public void GetDetails2() {
 // Specify the base URL to the RESTful web service

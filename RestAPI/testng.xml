@@ -7,6 +7,7 @@
         <methods>
             <include name="createRecord"/>
             <include name="updateAddress"/>
+            <include name="GetPlace"/>
             <exclude name="GetDetails2"/>
         </methods>
     </class>
