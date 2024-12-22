@@ -2,9 +2,9 @@ package dataFile;
 
 public class PayLoad {
 
-    public static String AddPlace(){
-    return "{\r\n" +
-        "  \"location\": {\r\n" +
+    public static String AddPlace() {
+        return "{\r\n" +
+                "  \"location\": {\r\n" +
                 "    \"lat\": -38.383494,\r\n" +
                 "    \"lng\": 33.427362\r\n" +
                 "  },\n" +
@@ -22,7 +22,7 @@ public class PayLoad {
 
     }
 
-    public static String UpdatePlace(){
+    public static String UpdatePlace() {
         return "{\n" +
                 "\"place_id\":\"placeID\",\n" +
                 "\"address\":\"101 Summer walk USA\",\n" +
@@ -65,14 +65,28 @@ public class PayLoad {
                 "}\r\n";
     }
 
-    public static String addBook(String aisle, String isbn)
-    {
+    public static String addBook(String aisle, String isbn) {
         return "{\n" +
                 "\"name\":\"Learn Appium Automation with Java\",\n" +
-                "\"isbn\":\""+isbn+"\",\n" +
-                "\"aisle\":\""+aisle+"\",\n" +
+                "\"isbn\":\"" + isbn + "\",\n" +
+                "\"aisle\":\"" + aisle + "\",\n" +
                 "\"author\":\"John foe\"\n" +
                 "}\n" +
                 "\n";
+    }
+
+    public static String createBug(String key, String summary, String name) {
+        return "{\n" +
+                "    \"fields\": {\n" +
+                "       \"project\":\n" +
+                "       {\n" +
+                "          \"key\": \""+key+"\"\n" +
+                "       },\n" +
+                "       \"summary\": \""+summary+"\",\n" +
+                "       \"issuetype\": {\n" +
+                "          \"name\": \""+name+"\"\n" +
+                "       }\n" +
+                "   }\n" +
+                "}";
     }
 }
