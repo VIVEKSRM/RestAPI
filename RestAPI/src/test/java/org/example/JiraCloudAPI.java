@@ -30,7 +30,7 @@ public class JiraCloudAPI {
                // .queryParam("key","qaclick123")
                 .header("Content-Type","application/json")
                 .header("Authorization","Basic dml2ZWsucmFuamFuLnNybUBnbWFpbC5jb206QVRBVFQzeEZmR0YwOVkzam1DOEtpT3FOcW9aZGd1emhlMVlFUlRSS3J5VUtsY0hoN0RNd1FEak9fMXBraS1tMTNQWUVGRWJWa09Pd3MzN3ZBQnFpaGJGcTRlX2RkRk5ZaFUzTEM2ekcwY2NGajE1bTI1OUNlUFdPUEVvZGZWRDJUbHJlanVwdFg1SzVHR3hEZ2NUZUN3REFMTFBGVEY2YVhBbGlWVzFac2dHcU1TYWZCRHhvcllnPTcxODRFRTgz")
-                .body(PayLoad.createBug("SCRUM","Test Button Not Working", "Bug"))
+                .body(PayLoad.createBug("SCRUM","DropDown Is Not Working", "Bug"))
                 .when().post("/rest/api/3/issue")
                 .then()
                 //.log().all() //Log is not needed as now we are saving the responce in string
@@ -42,7 +42,7 @@ public class JiraCloudAPI {
         JsonPath js = commonMethod.getJson(Responce);
         String bugID=js.getString("id");
         Place_Id.put("bugID1",bugID);
-        System.out.println("bugID1: "+bugID);
+        System.out.println("bugID1: "+Place_Id.get("bugID1"));
 
     }
 
@@ -58,7 +58,7 @@ public class JiraCloudAPI {
                 .log().all()
                 // .queryParam("key","qaclick123")
                 .header("X-Atlassian-Token","no-check")
-                .pathParams("Key",Place_Id.get("id"))
+                .pathParams("Key",Place_Id.get("bugID1"))
                 .header("Authorization","Basic dml2ZWsucmFuamFuLnNybUBnbWFpbC5jb206QVRBVFQzeEZmR0YwOVkzam1DOEtpT3FOcW9aZGd1emhlMVlFUlRSS3J5VUtsY0hoN0RNd1FEak9fMXBraS1tMTNQWUVGRWJWa09Pd3MzN3ZBQnFpaGJGcTRlX2RkRk5ZaFUzTEM2ekcwY2NGajE1bTI1OUNlUFdPUEVvZGZWRDJUbHJlanVwdFg1SzVHR3hEZ2NUZUN3REFMTFBGVEY2YVhBbGlWVzFac2dHcU1TYWZCRHhvcllnPTcxODRFRTgz")
                 .multiPart("file",new File("C:\\Users\\Vivek Ranjan\\OneDrive\\Pictures\\133660070265357947.jpg"))
                // .body(PayLoad.createBug("SCRUM","Test Button Not Working", "Bug"))
