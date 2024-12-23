@@ -1,46 +1,111 @@
 package org.example;
 
+import dataFile.PayLoad;
+import groovyjarjarantlr4.v4.codegen.model.SrcOp;
 import io.restassured.RestAssured;
 import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.equalTo;
+
 import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import reUsableMethods.commonMethod;
+
+import java.util.HashMap;
 
 public class RestAPIBasics {
 
-    @Test(enabled = false)
+    HashMap<String,String> Place_Id=new HashMap<String,String>();
+
+
+    @Test(enabled = true,priority=1)
     public void createRecord()
     {
         //given - All Inputs
         // When - Submit the API - resource and http methods
         // Then - validate the response
 
-        RestAssured.baseURI="http://rahulshettyacademy.com";
-        given().log().all().queryParam("key","qaclick123").header("Content-Type","application/json")
-                .body("{\r\n" +
-                        "  \"location\": {\r\n" +
-                        "    \"lat\": -38.383494,\r\n" +
-                        "    \"lng\": 33.427362\r\n" +
-                        "  },\n" +
-                        "  \"accuracy\": 50,\r\n" +
-                        "  \"name\": \"Frontline house\",\r\n" +
-                        "  \"phone_number\": \"(+91) 983 893 3937\",\r\n" +
-                        "  \"address\": \"29, side layout, cohen 09\",\n" +
-                        "  \"types\": [\n" +
-                        "    \"shoe park\",\n" +
-                        "    \"shop\"\n" +
-                        "  ],\n" +
-                        "  \"website\": \"https://rahulshettyacademy.com\",\n" +
-                        "  \"language\": \"French-IN\"\n" +
-                        "}")
+        RestAssured.baseURI="https://rahulshettyacademy.com";
+        String Responce= given()
+                .log().all()
+                .queryParam("key","qaclick123")
+                .header("Content-Type","application/json")
+                .body(PayLoad.AddPlace())
                 .when().post("maps/api/place/add/json")
-                .then().log().all().assertThat().statusCode(200);
+                .then()
+                //.log().all() //Log is not needed as now we are saving the responce in string
+                .assertThat().statusCode(200)
+                .body("scope",equalTo("APP"))
+                .header("Server","Apache/2.4.52 (Ubuntu)")
+                .extract().response().asString();
+        System.out.println("Responce: "+Responce);
 
+        //    JsonPath js = new JsonPath(Responce);
+        //    String placeID=js.getString("place_id");
+        //    String address=js.getString("address");
+        // At place of above three lines we can create a common methods and call it every time
+        //    String placeID=commonMethod.getJson(Responce).getString("placeID");
+        //    String address=commonMethod.getJson(Responce).getString("address");
+//or like below
+        JsonPath js =commonMethod.getJson(Responce);
+        String placeID=js.getString("place_id");
+        String address=js.getString("address");
+
+        Place_Id.put("IdOne",placeID);
+        Place_Id.put("address",address);
+        System.out.println("placeID: "+placeID);
 
     }
 
-    @Test(enabled = true)
+    //Add place -> Update place with new address -> Get place to validate if new address is present.
+    @Test(priority=2)
+    public void updateAddress()
+    {
+        System.out.println(Place_Id.get("IdOne"));
+        RestAssured.baseURI="https://rahulshettyacademy.com";
+        String updateAddressResponce=given().log().all().queryParam("key","qaclick123")
+                .header("Content-Type","application/json")
+                .body(PayLoad.UpdatePlace().replace("placeID",Place_Id.get("IdOne")))
+                .when().put("maps/api/place/update/json")
+                .then().log().all()
+                .assertThat().statusCode(200)
+                .body("msg",equalTo("Address successfully updated"))
+                .extract().response().asString();
+        // when we are updating the records, only sucess message will generate as part of response
+//        JsonPath js1 = new JsonPath(updateAddressResponce);
+//
+//        String placeID=js1.getString("place_id");
+//        System.out.println("*******placeID :- "+placeID);
+//        System.out.println("*******Responce of JS:- "+js1.toString());
+//        String newAddress=js1.getString("address");
+//        Place_Id.put("newAddress",newAddress);
+//        System.out.println("*******Responce :- "+newAddress);
+//        System.out.println("*******Responce :- "+Place_Id.get("newAddress"));
+    }
+
+    @Test(priority=3)
+    public void GetPlace()
+    {
+        String expectedNewAddress="101 Summer walk USA";
+        String getPlace=given().log().all().queryParam("key","qaclick123")
+                .queryParam("place_id", Place_Id.get("IdOne"))
+                .when().get("maps/api/place/get/json")
+                .then().log().all()
+                .assertThat().statusCode(200)
+                //verification of New address from RestAPI method
+                .body("address",equalTo("101 Summer walk USA")).extract().response().asString();
+        //Verification of New address from TestNG Assert
+        String actualAddress=commonMethod.getJson(getPlace).getString("address");
+        //System.out.println("*******actualAddress :- "+actualAddress);
+        Place_Id.put("actualAddress",actualAddress);
+        Assert.assertEquals(expectedNewAddress,Place_Id.get("actualAddress"));
+
+
+    }
+    @Test(enabled = false)
     public void GetDetails2() {
 // Specify the base URL to the RESTful web service
         RestAssured.baseURI = "https://demoqa.com/BookStore/v1/Books";
