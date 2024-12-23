@@ -2,7 +2,10 @@ package org.example;
 
 import io.restassured.path.json.JsonPath;
 import org.testng.annotations.Test;
+import pojo.Api;
 import pojo.GetCourse;
+
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
@@ -36,7 +39,18 @@ public class oAuthExample {
                 .when()
                 .get("https://rahulshettyacademy.com/oauthapi/getCourseDetails")
                 .as(GetCourse.class);
-        System.out.println(getCourse.getLinkedIn());
-        System.out.println(getCourse.getInstructor());
+        System.out.println("getLinkedIn: -"+getCourse.getLinkedIn());
+        System.out.println("getInstructor :-"+getCourse.getInstructor());
+        System.out.println("getCourseTitle from 2nd index API :-"+getCourse.getCourses().getApi().get(1).getCourseTitle());
+
+        // More examples
+        List<Api> api=getCourse.getCourses().getApi();
+        for(int i=0; i<=api.size()-1; i++)
+        {
+            if (api.get(i).getCourseTitle().equalsIgnoreCase("SoapUI Webservices testing"))
+            {
+                System.out.println("Data Present :-"+api.get(i).getCourseTitle().toString());
+            }
+        }
     }
 }
