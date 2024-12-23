@@ -2,6 +2,7 @@ package org.example;
 
 import io.restassured.path.json.JsonPath;
 import org.testng.annotations.Test;
+import pojo.GetCourse;
 
 import static io.restassured.RestAssured.given;
 
@@ -20,11 +21,22 @@ public class oAuthExample {
         JsonPath jsonPath = new JsonPath(response);
         String accessToken = jsonPath.getString("access_token");
         System.out.println(accessToken);
-        String r2= given()
+
+        //Below code is for direct printing the response
+        /*String r2= given()
                 .queryParams("access_token", accessToken)
                 .when()
                 .get("https://rahulshettyacademy.com/oauthapi/getCourseDetails")
                 .asString();
-        System.out.println(r2);
+        System.out.println(r2);*/
+
+        //Convert response 2 (r2) to Json object - deserialization
+        GetCourse getCourse= given()
+                .queryParams("access_token", accessToken)
+                .when()
+                .get("https://rahulshettyacademy.com/oauthapi/getCourseDetails")
+                .as(GetCourse.class);
+        System.out.println(getCourse.getLinkedIn());
+        System.out.println(getCourse.getInstructor());
     }
 }
