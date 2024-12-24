@@ -42,6 +42,7 @@ public class SpecBuilderTest {
 				.setContentType(ContentType.JSON).build();
 
 
+
 		ResponseSpecification resspec =new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
 		RequestSpecification res=given().spec(req)
 				.body(p);
