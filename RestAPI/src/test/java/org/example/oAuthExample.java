@@ -1,17 +1,21 @@
 package org.example;
 
 import io.restassured.path.json.JsonPath;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import pojo.Api;
-import pojo.GetCourse;
+import pojo.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 
 public class oAuthExample {
     @Test
     public void oAuthTest() throws InterruptedException {
+    String[] expectedWebAutomationTitles={"Selenium Webdriver Java","Cypress","Protractor"};
 
         String response = given()
                 .formParams("client_id", "692183103107-p0m7ent2hk7suguv4vq22hjcfhcr43pj.apps.googleusercontent.com")
@@ -52,5 +56,22 @@ public class oAuthExample {
                 System.out.println("Data Present :-"+api.get(i).getCourseTitle().toString());
             }
         }
+
+        // share all the Course Title in WedAutomation
+        List<pojo.WebAutomation> webAutomationActualTitles= getCourse.getCourses().getWebAutomation();
+        ArrayList<String> arrWebAutomationActualTitles= new ArrayList<String>();
+        for(int i=0; i<=webAutomationActualTitles.size()-1; i++)
+        {
+            arrWebAutomationActualTitles.add(webAutomationActualTitles.get(i).getCourseTitle().toString());
+        }
+        List<String> ExpectedList=Arrays.asList(expectedWebAutomationTitles);
+        if(ExpectedList.equals(arrWebAutomationActualTitles))
+        {
+            System.out.println(" All the Values Matches");
+        }
+        else {
+            System.out.println(" Values are not Matched");
+        }
+        Assert.assertEquals(ExpectedList,arrWebAutomationActualTitles);
     }
 }
