@@ -16,7 +16,6 @@ public class oAuthExample {
     @Test
     public void oAuthTest() throws InterruptedException {
     String[] expectedWebAutomationTitles={"Selenium Webdriver Java","Cypress","Protractor"};
-
         String response = given()
                 .formParams("client_id", "692183103107-p0m7ent2hk7suguv4vq22hjcfhcr43pj.apps.googleusercontent.com")
                 .formParams("client_secret", "erZOWM9g3UtwNRj340YYaK_W")
@@ -59,7 +58,7 @@ public class oAuthExample {
 
         // share all the Course Title in WedAutomation
         List<pojo.WebAutomation> webAutomationActualTitles= getCourse.getCourses().getWebAutomation();
-        ArrayList<String> arrWebAutomationActualTitles= new ArrayList<String>();
+        ArrayList<String> arrWebAutomationActualTitles= new ArrayList<>();
         for(int i=0; i<=webAutomationActualTitles.size()-1; i++)
         {
             arrWebAutomationActualTitles.add(webAutomationActualTitles.get(i).getCourseTitle().toString());
