@@ -118,4 +118,17 @@ public class RestAPIBasics {
         System.out.println("Status received => " + response.getStatusLine());
         System.out.println("Response=>" + response.prettyPrint());
     }
+    @Test
+    public void Request1() {
+        RequestSpecification request = given();
+        // Setting Base URI
+        request.baseUri("https://restful-booker.herokuapp.com");
+        // Setting Base Path
+        request.basePath("/booking");
+    //    request.contentType();  // in case if we want to add content type
+     //   request.queryParam();  // in case we want to add query parameter
+        Response response = request.get();
+        System.out.println(response.asString());
+    }
+
 }
