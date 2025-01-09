@@ -8,11 +8,10 @@ import pojo.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 
 import static io.restassured.RestAssured.*;
 
-public class oAuthExample {
+public class oAuthDeserialization {
     @Test
     public void oAuthTest() throws InterruptedException {
     String[] expectedWebAutomationTitles={"Selenium Webdriver Java","Cypress","Protractor"};
