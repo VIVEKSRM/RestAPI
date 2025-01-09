@@ -2,6 +2,7 @@ package org.example;
 
 import dataFile.PayLoad;
 import io.restassured.path.json.JsonPath;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class complexJsonParse {
         System.out.println("count:- "+count);
 
         //Print Purchase Amount
+       // int totalAmount=js.getInt("dashboard.purchaseAmount");
         int totalAmount=js.getInt("dashboard.purchaseAmount");
         System.out.println("totalAmount:- "+totalAmount);
 
@@ -59,6 +61,7 @@ public class complexJsonParse {
 
           // Another Example
             ArrayList<Integer> arr=new ArrayList<>();
+            int totalPurchaseAmount=0;
             for (i=0; i<count;i++) {
                int totalCopies= js.get("courses[" + i + "].copies");
                int totalPrice=js.get("courses[" + i + "].price");
@@ -67,10 +70,13 @@ public class complexJsonParse {
                else {
                    arr.add(0,arr.get(0) + (totalCopies * totalPrice));
                }
-                int totalPurchaseAmount=js.getInt("dashboard.purchaseAmount");
-               if (arr.get(0).equals(totalPurchaseAmount))
-                System.out.println("Test Passed- Total Purchase Amount Matched with multiplication of Copies and Price:- "+totalPurchaseAmount);
+                totalPurchaseAmount= js.getInt("dashboard.purchaseAmount");
+               if (arr.get(0).equals(totalPurchaseAmount)) {
+                   System.out.println("Test Passed- Total Purchase Amount Matched with multiplication of Copies and Price:- " + totalPurchaseAmount);
+               }
             }
+            Assert.assertEquals(arr.get(0), totalPurchaseAmount, "Assertion Failed");
+
         }
 
 

@@ -39,7 +39,7 @@ public class oAuthExample {
         //Convert response 2 (r2) to Json object - deserialization
         GetCourse getCourse= given()
                 .queryParams("access_token", accessToken)
-                .when()
+                .when().log().all()
                 .get("https://rahulshettyacademy.com/oauthapi/getCourseDetails")
                 .as(GetCourse.class);
         System.out.println("getLinkedIn: -"+getCourse.getLinkedIn());
