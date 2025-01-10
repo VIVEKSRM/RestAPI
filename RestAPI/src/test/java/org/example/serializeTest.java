@@ -33,6 +33,7 @@ public class serializeTest {
 		l.setLng(33.427362);
 
 		p.setLocation(l);
+		System.out.println("*** p:-" +p);
 		Response res=given().log().all().queryParam("key", "qaclick123")
 				.body(p)
 				.when().post("/maps/api/place/add/json").
