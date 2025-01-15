@@ -85,8 +85,22 @@ public class RestAPIBasics {
 //        System.out.println("*******Responce :- "+newAddress);
 //        System.out.println("*******Responce :- "+Place_Id.get("newAddress"));
     }
-
     @Test(priority=3)
+    public void patchTest() {
+        System.out.println(Place_Id.get("IdOne"));
+        RestAssured.baseURI="https://rahulshettyacademy.com";
+        String updateAddressResponce=given().log().all().queryParam("key","qaclick123")
+                .header("Content-Type","application/json")
+                .body(PayLoad.patchPlace())
+                .when().put("maps/api/place/update/json")
+                .then().log().all()
+                .assertThat().statusCode(200)
+                .body("msg",equalTo("Address successfully updated"))
+                .extract().response().asString();
+        System.out.println(updateAddressResponce);
+    }
+
+    @Test(priority=3, enabled=false)
     public void GetPlace()
     {
         String expectedNewAddress="101 Summer walk USA";
@@ -118,7 +132,9 @@ public class RestAPIBasics {
         System.out.println("Status received => " + response.getStatusLine());
         System.out.println("Response=>" + response.prettyPrint());
     }
-    @Test
+
+
+    @Test(enabled=false)
     public void Request1() {
         RequestSpecification request = given();
         // Setting Base URI

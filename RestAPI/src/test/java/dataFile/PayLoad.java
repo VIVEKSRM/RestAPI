@@ -29,6 +29,11 @@ public class PayLoad {
                 "\"key\":\"qaclick123\"\n" +
                 "}";
     }
+    public static String patchPlace() {
+        return "{\n" +
+                "\"address\":\"101 Summer walk USA 2342\",\n" +
+                "}";
+    }
 
 
     public static String coursePrice() {
