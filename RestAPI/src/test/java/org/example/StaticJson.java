@@ -20,7 +20,8 @@ public class StaticJson {
                 .log().all()
                 .queryParam("key","qaclick123")
                 .header("Content-Type","application/json")
-                .body(new String(Files.readAllBytes(Paths.get("C:\\Users\\Vivek Ranjan\\OneDrive\\Documents\\addPlace.json"))))
+               // .body(new String(Files.readAllBytes(Paths.get("C:\\Users\\Vivek Ranjan\\OneDrive\\Documents\\addPlace.json"))))
+                .body(new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir")+"\\src\\test\\resources\\addPlace.json" ))))
                 .when().post("maps/api/place/add/json")
                 .then()
                 //.log().all() //Log is not needed as now we are saving the responce in string

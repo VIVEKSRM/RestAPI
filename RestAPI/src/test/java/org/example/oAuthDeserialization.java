@@ -40,6 +40,7 @@ public class oAuthDeserialization {
                 .queryParams("access_token", accessToken)
                 .when().log().all()
                 .get("https://rahulshettyacademy.com/oauthapi/getCourseDetails")
+                .then().log().all().extract().response()
                 .as(GetCourse.class);
         System.out.println("getLinkedIn: -"+getCourse.getLinkedIn());
         System.out.println("getInstructor :-"+getCourse.getInstructor());
