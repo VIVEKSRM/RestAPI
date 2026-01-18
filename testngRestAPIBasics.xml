@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="D:/Automation_Framework_v0.2/RestAPI/src/test/java/org/example/RestAPIBasics.java">
+        <classes>
+            <class name="org.example.RestAPIBasics">
+        <methods>
+            <include name="createRecord"/>
+            <include name="updateAddress"/>
+            <include name="patchTest"/>
+            <include name="GetPlace"/>
+            <exclude name="GetDetails2"/>
+        </methods>
+    </class>
+    </classes>
+    </test>
+</suite>
