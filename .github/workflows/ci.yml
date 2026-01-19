@@ -1,19 +1,16 @@
-name: Java CI
+name: Basic Workflow
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
-  build:
+  demo:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Say Hello
+        run: echo "👋 Hello Vivek! GitHub Actions is working."
 
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'  # ✅ Add this line
+      - name: Show Current Directory
+        run: pwd
 
-      - name: Build with Maven
-        run: mvn clean install
+      - name: List Files
+        run: ls -la
