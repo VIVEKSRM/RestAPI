@@ -7,50 +7,34 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.annotations.Test;
 
-public class RestAPIBasics {
+public class RestAPIBasics extends TestBase {
 
-    @Test(enabled = false)
+    @Test(enabled = false, groups = {"integration"})
     public void createRecord()
     {
-        //given - All Inputs
-        // When - Submit the API - resource and http methods
-        // Then - validate the response
+        RestAssured.baseURI = System.getProperty("base.uri.rahulshetty", config.get("base.uri.rahulshetty"));
+        String apiKey = System.getProperty("api.key", config.get("api.key"));
+        String payload = TestUtils.resourceAsString("payloads/add_place.json");
 
-        RestAssured.baseURI="http://rahulshettyacademy.com";
-        given().log().all().queryParam("key","qaclick123").header("Content-Type","application/json")
-                .body("{\r\n" +
-                        "  \"location\": {\r\n" +
-                        "    \"lat\": -38.383494,\r\n" +
-                        "    \"lng\": 33.427362\r\n" +
-                        "  },\n" +
-                        "  \"accuracy\": 50,\r\n" +
-                        "  \"name\": \"Frontline house\",\r\n" +
-                        "  \"phone_number\": \"(+91) 983 893 3937\",\r\n" +
-                        "  \"address\": \"29, side layout, cohen 09\",\n" +
-                        "  \"types\": [\n" +
-                        "    \"shoe park\",\n" +
-                        "    \"shop\"\n" +
-                        "  ],\n" +
-                        "  \"website\": \"https://rahulshettyacademy.com\",\n" +
-                        "  \"language\": \"French-IN\"\n" +
-                        "}")
+        given().log().all().queryParam("key", apiKey).header("Content-Type","application/json")
+                .body(payload)
                 .when().post("maps/api/place/add/json")
                 .then().log().all().assertThat().statusCode(200);
 
-
     }
 
-    @Test(enabled = true)
-    public void GetDetails2() {
-// Specify the base URL to the RESTful web service
-        RestAssured.baseURI = "https://demoqa.com/BookStore/v1/Books";
+    @Test(groups = {"smoke"})
+    public void getDetails() {
+        // Specify the base URL to the RESTful web service
+        RestAssured.baseURI = System.getProperty("base.uri.demoqa", config.get("base.uri.demoqa"));
         // Get the RequestSpecification of the request to be sent to the server.
         RequestSpecification httpRequest = RestAssured.given();
         // specify the method type (GET) and the parameters if any.
         //In this case the request does not take any parameters
         Response response = httpRequest.request(Method.GET, "");
-        // Print the status and message body of the response received from the server
+        // Basic assertions instead of prints
         System.out.println("Status received => " + response.getStatusLine());
         System.out.println("Response=>" + response.prettyPrint());
+        org.testng.Assert.assertEquals(response.getStatusCode(), 200, "Expected HTTP status 200");
     }
 }

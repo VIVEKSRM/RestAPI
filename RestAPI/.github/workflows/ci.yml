@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+    inputs:
+      run_integration:
+        description: 'Set to true to run integration tests (makes external HTTP calls)'
+        required: false
+        default: 'false'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 22
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '22'
+          cache: maven
+
+      - name: Run smoke tests (default)
+        run: mvn -B test
+
+      - name: Run integration tests (optional)
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.run_integration == 'true' }}
+        env:
+          API_KEY: ${{ secrets.TEST_API_KEY }}
+          BASE_URI_RAHUL: ${{ secrets.BASE_URI_RAHUL }}
+          BASE_URI_DEMOQA: ${{ secrets.BASE_URI_DEMOQA }}
+        run: |
+          echo "Running integration tests with provided secrets"
+          mvn -B -P integration -Dapi.key=${API_KEY} -Dbase.uri.rahulshetty=${BASE_URI_RAHUL} -Dbase.uri.demoqa=${BASE_URI_DEMOQA} test

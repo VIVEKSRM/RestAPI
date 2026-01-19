@@ -4,34 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="625272d9-29a4-4d8a-a6b4-63ae20fbb8ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/RestAPIBasics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/config.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/src/main/java/org/example/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/src/main/java/pom/object/setupPages/loginSetupPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/src/main/java/pom/object/viewPages/homePage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/src/main/java/pom/object/viewPages/loginPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/src/main/java/utilityPackage/BaseClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/src/main/java/utilityPackage/WaitUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/src/test/java/com/login.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/src/test/java/org/example/AppTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SeleniumTestNGMVNFramework/src/test/java/org/example/RahulShettyExampleTest.java" beforeDir="false" />
+    <list default="true" id="625272d9-29a4-4d8a-a6b4-63ae20fbb8ab" name="Changes" comment="Committing the changes">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/TestBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/TestUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/config.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/payloads/add_place.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/RestAPIBasics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/RestAPIBasics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +148,20 @@
       <option name="presentableId" value="Default" />
       <updated>1731636578818</updated>
     </task>
+    <task id="LOCAL-00001" summary="Committing the changes">
+      <option name="closed" value="true" />
+      <created>1768842148929</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1768842148930</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Committing the changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Committing the changes" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

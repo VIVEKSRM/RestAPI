@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="D:/Automation_Framework_v0.2/RestAPI/src/test/java/org/example/RestAPIBasics.java">
+<suite name="All Test Suite" verbose="2">
+    <test name="Smoke Tests" preserved-order="true">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
         <classes>
-            <class name="org.example.RestAPIBasics">
-        <methods><include name="getdetails"/>
-            <include name="GetDetails2"/>
-        </methods>
-    </class>
-    </classes>
+            <class name="org.example.RestAPIBasics"/>
+            <class name="org.example.AppTest"/>
+        </classes>
     </test>
 </suite>
