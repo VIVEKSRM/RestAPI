@@ -1,0 +1,16 @@
+name: Basic Workflow
+
+on: [push]
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: echo "👋 Hello Vivek! GitHub Actions is working."
+
+      - name: Show Current Directory
+        run: pwd
+
+      - name: List Files
+        run: ls -la
