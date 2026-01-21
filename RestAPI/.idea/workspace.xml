@@ -5,13 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="625272d9-29a4-4d8a-a6b4-63ae20fbb8ab" name="Changes" comment="Committing the changes">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/listeners/TestListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/reports/ExtentManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/reports/ExtentTestManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.github/workflows/ci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/dataFile/DPClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/dataFile/PayLoad.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/DynamicJson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/JiraCloudAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/SpecBuilderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/StaticJson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/complexJsonParse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/oAuthExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/serializeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pojo/AddPlace.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pojo/Api.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pojo/Courses.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pojo/GetCourse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pojo/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pojo/Mobile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pojo/WebAutomation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/reUsableMethods/commonMethod.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/example/App.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/org/example/AppTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/org/example/RestAPIBasics.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testngJiraCloudAPI.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testngRestAPIBasics.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/TestBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/TestBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/RestAPIBasics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/RestAPIBasics.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,25 +78,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;TestNG.D:/Automation_Framework_v0.2/RestAPI/testng.xml.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Feature__Integration3&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Rest_API&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TestNG.D:/Automation_Framework_v0.2/RestAPI/testng.xml.executor": "Run",
+    "git-widget-placeholder": "Merging Feature__Integration3",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Rest_API",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="TestNG.D:/Automation_Framework_v0.2/RestAPI/testng.xml">
     <configuration name="D:/Automation_Framework_v0.2/RestAPI/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="RestAPI" />
@@ -164,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768843473156</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Committing the changes">
+      <option name="closed" value="true" />
+      <created>1769007488493</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1769007488499</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
