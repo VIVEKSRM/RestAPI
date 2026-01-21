@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" verbose="2">
+    <listeners>
+        <listener class-name="org.example.listeners.TestListener"/>
+    </listeners>
+    <test name="Smoke Tests" preserved-order="true">
+        <classes>
+            <class name="org.example.RestAPIBasics"/>
+            <class name="org.example.AppTest"/>
+        </classes>
+    </test>
+</suite>

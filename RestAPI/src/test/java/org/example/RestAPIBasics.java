@@ -20,8 +20,7 @@ public class RestAPIBasics {
 
     HashMap<String,String> Place_Id=new HashMap<String,String>();
 
-
-    @Test(enabled = true,priority=1)
+    @Test
     public void createRecord()
     {
         //given - All Inputs
@@ -115,8 +114,10 @@ public class RestAPIBasics {
         //In this case the request does not take any parameters
         Response response = httpRequest.request(Method.GET, "");
         // Print the status and message body of the response received from the server
+        // Basic assertions instead of prints
         System.out.println("Status received => " + response.getStatusLine());
         System.out.println("Response=>" + response.prettyPrint());
+        org.testng.Assert.assertEquals(response.getStatusCode(), 200, "Expected HTTP status 200");
     }
     @Test
     public void Request1() {
