@@ -63,8 +63,8 @@ public class complexJsonParse {
             ArrayList<Integer> arr=new ArrayList<>();
             int totalPurchaseAmount=0;
             for (i=0; i<count;i++) {
-               int totalCopies= js.get("courses[" + i + "].copies");
-               int totalPrice=js.get("courses[" + i + "].price");
+               int totalCopies= js.getInt("courses[" + i + "].copies");
+               int totalPrice=js.getInt("courses[" + i + "].price");
                if(arr.isEmpty())
                    arr.add(totalCopies*totalPrice);
                else {
