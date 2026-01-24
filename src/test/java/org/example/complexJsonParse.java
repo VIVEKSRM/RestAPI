@@ -93,7 +93,7 @@ public class complexJsonParse {
         int coursesPrice=jp.getInt("courses[2].price");
 
         // Print the values
-        System.out.println("coursesTitle :-"+coursesTitle +"   coursesPrice:- "+coursesPrice);
+        System.out.println(" coursesTitle :-"+coursesTitle +"   coursesPrice:- "+coursesPrice);
 
 
         //Get all the courses titles and store them in the List
@@ -103,29 +103,29 @@ public class complexJsonParse {
         List<Integer> intList=jp.getList("courses.copies");
 
 
-        System.out.println(" Courses Titles: ");
+        System.out.println("*********** Courses Titles: ");
         for (int i=0; i<counts; i++)
         {
-            System.out.println((i+1) + jp.getString("courses["+i+"].title"));
+            System.out.println((i+1) +". " + jp.getString("courses["+i+"].title"));
 
         }
 
 
         // Using Java Collections to print the values from the List
-        System.out.println(" Courses Titles using forEach from Java Collections : ");
+        System.out.println("*********** Courses Titles using forEach from Java Collections : ");
 
         // forEach will also directly iterate the values of the list and print it. Here we are using Only printing hence we can do this.
         strList.forEach(n-> System.out.println(n));
 
         // Another way to do the same using stream
-        System.out.println(" Courses Copies using Stream API: ");
-        intList.stream().forEach(n-> System.out.print(n));
+        System.out.println("*********** Courses Copies using Stream API: ");
+        strList.stream().forEach(n-> System.out.println(n));
 
         // Another way to do the same using stream
-        System.out.println(" Courses Copies using Stream API Filter Option: ");
+        System.out.println("*********** Courses Copies using Stream API Filter Option: ");
         intList.stream()
-                .filter(n->n>7)
-                .forEach(n-> System.out.print(n));
+                .filter(n->n>4)
+                .forEach(n-> System.out.println(n));
 
         // Assertion Example
         Assert.assertTrue(coursesPrice>0, "coursesPrice should be greater than zero");
