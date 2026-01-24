@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class complexJsonParse {
     @Test
@@ -79,6 +80,55 @@ public class complexJsonParse {
 
         }
 
+        // Other examples :
+        JsonPath jp=new JsonPath(PayLoad.coursePrice());
+
+        // get the size of the array
+        int counts=jp.getInt("courses.size()");
+
+        // get the title of first course
+        String coursesTitle=jp.getString("courses[0].title");
+
+        // get the price of third course
+        int coursesPrice=jp.getInt("courses[2].price");
+
+        // Print the values
+        System.out.println("coursesTitle :-"+coursesTitle +"   coursesPrice:- "+coursesPrice);
+
+
+        //Get all the courses titles and store them in the List
+        List<String> strList= jp.getList("courses.title");
+
+        //Get all the courses copies and store them in the List
+        List<Integer> intList=jp.getList("courses.copies");
+
+
+        System.out.println(" Courses Titles: ");
+        for (int i=0; i<counts; i++)
+        {
+            System.out.println((i+1) + jp.getString("courses["+i+"].title"));
+
+        }
+
+
+        // Using Java Collections to print the values from the List
+        System.out.println(" Courses Titles using forEach from Java Collections : ");
+
+        // forEach will also directly iterate the values of the list and print it. Here we are using Only printing hence we can do this.
+        strList.forEach(n-> System.out.println(n));
+
+        // Another way to do the same using stream
+        System.out.println(" Courses Copies using Stream API: ");
+        intList.stream().forEach(n-> System.out.print(n));
+
+        // Another way to do the same using stream
+        System.out.println(" Courses Copies using Stream API Filter Option: ");
+        intList.stream()
+                .filter(n->n>7)
+                .forEach(n-> System.out.print(n));
+
+        // Assertion Example
+        Assert.assertTrue(coursesPrice>0, "coursesPrice should be greater than zero");
 
     }
 }
